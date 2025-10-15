@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class ProjectileLine: MonoBehavior {
+public class ProjectileLine: MonoBehaviour {
     static List<ProjectileLine> PROJ_LINES = new List<ProjectileLine>();
     private const float DIM_MULT = 0.75f;
 
@@ -25,8 +25,11 @@ public class ProjectileLine: MonoBehavior {
             _line.positionCount++;
             _line.SetPosition(_line.positionCount-1, transform.position);
             if(_projectile != null){
-                _drawing = false;
-                _projectile = null;
+                if (!_projectile.awake)
+                {
+                    _drawing = false;
+                    _projectile = null;
+                }
             }
         }
     }
@@ -40,7 +43,7 @@ public class ProjectileLine: MonoBehavior {
         foreach(ProjectileLine pl in PROJ_LINES){
             col = pl._line.startColor;
             col = col * DIM_MULT;
-            pl._line.starterColor = pl._line.endColor = col;
+            pl._line.startColor = pl._line.endColor = col;
         }
 
         PROJ_LINES.Add(newLine);
