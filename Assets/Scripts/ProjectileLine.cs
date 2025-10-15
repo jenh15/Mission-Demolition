@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class ProjectileLine: MonoBehavior {
+public class ProjectileLine: MonoBehaviour {
     private LineRenderer _line;
     private bool _drawing = true;
     private Projectile _projectile;
