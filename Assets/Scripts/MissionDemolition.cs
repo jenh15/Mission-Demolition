@@ -51,6 +51,9 @@ public class MissionDemolition : MonoBehaviour {
         UpdateGUI();
 
         mode = GameMode.playing;
+
+        // Zoom out to show both
+        FollowCam.SWITCH_VIEW(FollowCam.eView.both);
     }
 
     void UpdateGUI(){
