@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Projectile: MonoBehavior{
+public class Projectile : MonoBehaviour {
     const int LOOKBACK_COUNT = 10;
 
     [SerializeField]
@@ -18,7 +18,8 @@ public class Projectile: MonoBehavior{
     private List<float> deltas = new List<float>();
     private Rigidbody rigid;
 
-    void Start(){
+    void Start()
+    {
         rigid = GetComponent<Rigidbody>();
         awake = true;
         prevPos = new Vector3(1000, 1000, 0);
@@ -38,7 +39,7 @@ public class Projectile: MonoBehavior{
 
         float maxDelta = 0;
 
-        foreach(float f in delta){
+        foreach(float f in deltas){
             if(f>maxDelta) maxDelta = f;
         }
 
