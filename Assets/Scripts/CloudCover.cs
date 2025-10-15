@@ -5,7 +5,7 @@ using UnityEngine;
 public class CloudCover : MonoBehaviour
 {
     [Header("Inscribed")]
-    public Sprite[] clodSprites;
+    public Sprite[] cloudSprites;
     public int numClouds = 40;
     public Vector3 minPos = new Vector3(-20, -5, -5);
     public Vector3 maxPos = new Vector3(300, 40, 5);
