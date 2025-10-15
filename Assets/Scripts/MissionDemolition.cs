@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public enum GameMode {
     idle,
@@ -13,8 +14,8 @@ public class MissionDemolition : MonoBehaviour {
     static private MissionDemolition S;
     
     [Header("Inscribed")]
-    public Text uitLevel;
-    public Text uitShots;
+    public TextMeshProUGUI uitLevel;
+    public TextMeshProUGUI uitShots;
     public Vector3 castlePos;
     public GameObject[] castles;
 
