@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18386917, g: 0.2290177, b: 0.30311212, a: 1}
+  m_IndirectSpecularColor: {r: 0.18386891, g: 0.2290173, b: 0.30311155, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1122,10 +1122,10 @@ MonoBehaviour:
   uitShots: {fileID: 877640979}
   castlePos: {x: 50, y: -9.5, z: 0}
   castles:
+  - {fileID: 2211137414063078326, guid: 66a0fb545a8cd3c48b166df241d1ff55, type: 3}
   - {fileID: 2211137414063078326, guid: 1fe7e677b507fea48a25330fb4219c48, type: 3}
-  - {fileID: 2211137414063078326, guid: beadd2faf75ec7b4082ec05ee3017e8e, type: 3}
-  - {fileID: 2211137414063078326, guid: a80696ac7622c724082bc9c99556644c, type: 3}
-  - {fileID: 2211137414063078326, guid: d47292b6c1f3f074c942591e00e4bcb8, type: 3}
+  - {fileID: 2211137414063078326, guid: de0f201e93cd1d243918bc1af46fa660, type: 3}
+  - {fileID: 2211137414063078326, guid: dbdac08176e78b541a8bc7c72de108be, type: 3}
   level: 0
   levelMax: 0
   shotsTaken: 0
