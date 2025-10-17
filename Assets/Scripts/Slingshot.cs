@@ -18,6 +18,7 @@ public class Slingshot : MonoBehaviour
     [Header("Dynamic")]
     public GameObject launchPoint;
     public Vector3 launchPos;
+    public Vector3 rubberLaunchPos;
     public GameObject projectile;
     public bool aimingMode;
 
@@ -25,6 +26,7 @@ public class Slingshot : MonoBehaviour
     {
         rubberBand.SetPosition(0, firstPoint.position);
         rubberBand.SetPosition(2, secondPoint.position);
+        rubberLaunchPos = rubberBand.GetPosition(1);
     }
     
     void Awake()
@@ -69,10 +71,10 @@ public class Slingshot : MonoBehaviour
         // Get the current mouse position in 2D screen coordinates
         Vector3 mousePos3D = GetMousePosition();
 
-        if (Input.GetMouseButton(0))
+        /* if (Input.GetMouseButton(0))
         {
             rubberBand.SetPosition(1, mousePos3D);
-        }
+        } */
 
         // Find the delta form the launchPos to the mousePos3D
         Vector3 mouseDelta = mousePos3D - launchPos;
@@ -87,6 +89,11 @@ public class Slingshot : MonoBehaviour
         // Move the projectile to this new position
         Vector3 projPos = launchPos + mouseDelta;
         projectile.transform.position = projPos;
+
+        if (Input.GetMouseButton(0))
+        {
+            rubberBand.SetPosition(1, projPos); // Set the middle of the rubber band to where the projectile is
+        }
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -103,6 +110,9 @@ public class Slingshot : MonoBehaviour
             FollowCam.POI = projectile; // Set the _MainCamera POI
             // Add a ProjectileLine to the Projectile
             Instantiate<GameObject>(projLinePrefab, projectile.transform);
+
+            rubberBand.SetPosition(1, rubberLaunchPos);
+
             projectile = null;
             MissionDemolition.SHOT_FIRED();
         }
