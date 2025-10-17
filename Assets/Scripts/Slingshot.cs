@@ -51,6 +51,10 @@ public class Slingshot : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (FindObjectOfType<GameManager>().gameOver)   // if the game is over, the player cannot launch anymore
+        {
+            return;
+        }
         // The player has pressed the mouse button while over Slingshot
         aimingMode = true;
 
