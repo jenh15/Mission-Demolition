@@ -34,10 +34,9 @@ public class MissionDemolition : MonoBehaviour {
         level = 0;
         shotsTaken = 0;
         levelMax = castles.Length;
-        StartLevel();
     }
 
-    void StartLevel(){
+    public void StartLevel(){
         if(castle != null){
             Destroy(castle);
         }

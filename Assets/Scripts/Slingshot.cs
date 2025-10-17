@@ -51,7 +51,7 @@ public class Slingshot : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (FindObjectOfType<GameManager>().gameOver)   // if the game is over, the player cannot launch anymore
+        if (FindObjectOfType<GameManager>().gameOver || FindObjectOfType<GameManager>().gameStart == false)   // if the game is over, the player cannot launch anymore
         {
             return;
         }

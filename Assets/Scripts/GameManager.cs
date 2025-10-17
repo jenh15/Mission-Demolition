@@ -5,10 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject gameOverUI;
+    [SerializeField]
+    public GameObject gameOverUI, startUI;
     public bool gameOver = false;
+    public bool gameStart = false;
+    public MissionDemolition missionDemo;
+
     // Start is called before the first frame update
 
+    public void StartGame()
+    {
+        gameStart = true;
+        startUI.SetActive(false);
+        missionDemo.StartLevel();
+    }
+    
     public void GameOver()
     {
         gameOverUI.SetActive(true);
@@ -17,7 +28,10 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene("_Scene_0");
+        gameOver = false;
+        missionDemo.level = 0;
+        gameOverUI.SetActive(false);
+        missionDemo.StartLevel();
     }
 
     public void Quit()
