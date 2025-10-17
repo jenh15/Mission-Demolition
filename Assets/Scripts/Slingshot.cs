@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Slingshot : MonoBehaviour
 {
+    [SerializeField] private LineRenderer rubberBand;
+    [SerializeField] private Transform firstPoint;
+    [SerializeField] private Transform secondPoint;
+
     // fields set in Unity Inspector pane
     [Header("Inscribed")]
     public GameObject projectilePrefab;
@@ -17,6 +21,12 @@ public class Slingshot : MonoBehaviour
     public GameObject projectile;
     public bool aimingMode;
 
+    void Start()
+    {
+        rubberBand.SetPosition(0, firstPoint.position);
+        rubberBand.SetPosition(2, secondPoint.position);
+    }
+    
     void Awake()
     {
         Transform launchPointTrans = transform.Find("LaunchPoint");
@@ -55,11 +65,14 @@ public class Slingshot : MonoBehaviour
     {
         // If Slingshot is not in aimingMode, don't run this code
         if (!aimingMode) return;
-
+        
         // Get the current mouse position in 2D screen coordinates
-        Vector3 mousePos2D = Input.mousePosition;
-        mousePos2D.z = -Camera.main.transform.position.z;
-        Vector3 mousePos3D = Camera.main.ScreenToWorldPoint(mousePos2D);
+        Vector3 mousePos3D = GetMousePosition();
+
+        if (Input.GetMouseButton(0))
+        {
+            rubberBand.SetPosition(1, mousePos3D);
+        }
 
         // Find the delta form the launchPos to the mousePos3D
         Vector3 mouseDelta = mousePos3D - launchPos;
@@ -86,12 +99,20 @@ public class Slingshot : MonoBehaviour
 
             // Switch to slingshot view immediately before setting POI
             FollowCam.SWITCH_VIEW(FollowCam.eView.slingshot);
-            
+
             FollowCam.POI = projectile; // Set the _MainCamera POI
             // Add a ProjectileLine to the Projectile
             Instantiate<GameObject>(projLinePrefab, projectile.transform);
             projectile = null;
             MissionDemolition.SHOT_FIRED();
         }
+    }
+    
+    Vector3 GetMousePosition()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z -= Camera.main.transform.position.z;
+        Vector3 mousePositionInWorld = Camera.main.ScreenToWorldPoint(mousePos);
+        return mousePositionInWorld;
     }
 }
