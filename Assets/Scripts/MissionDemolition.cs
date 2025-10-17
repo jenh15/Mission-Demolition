@@ -18,6 +18,7 @@ public class MissionDemolition : MonoBehaviour {
     public TextMeshProUGUI uitShots;
     public Vector3 castlePos;
     public GameObject[] castles;
+    public GameManager gameManager;
 
     [Header("Dynamic")]
     public int level;
@@ -73,10 +74,13 @@ public class MissionDemolition : MonoBehaviour {
 
     void NextLevel(){
         level++;
-        if(level == levelMax){
-            level = 0;
-            shotsTaken = 0;
+        if (level == levelMax)
+        {
+            level = levelMax - 1 ;
+            gameManager.GameOver();
+            return;
         }
+        
         StartLevel();
     }
 
