@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Slingshot : MonoBehaviour
 {
+    AudioSource angryCat;
     [SerializeField] private LineRenderer rubberBand;
     [SerializeField] private Transform firstPoint;
     [SerializeField] private Transform secondPoint;
@@ -61,6 +62,8 @@ public class Slingshot : MonoBehaviour
 
         // Set it to isKinematic for now
         projectile.GetComponent<Rigidbody>().isKinematic = true;
+
+        angryCat = projectile.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -103,6 +106,11 @@ public class Slingshot : MonoBehaviour
             projRB.isKinematic = false;
             projRB.collisionDetectionMode = CollisionDetectionMode.Continuous;
             projRB.velocity = -mouseDelta * velocityMult;
+
+            if (angryCat != null)
+            {
+                angryCat.Play();
+            }
 
             // Switch to slingshot view immediately before setting POI
             FollowCam.SWITCH_VIEW(FollowCam.eView.slingshot);
