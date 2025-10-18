@@ -16,9 +16,11 @@ public class MissionDemolition : MonoBehaviour {
     [Header("Inscribed")]
     public TextMeshProUGUI uitLevel;
     public TextMeshProUGUI uitShots;
+    public TextMeshProUGUI uiNumStars;
     public Vector3 castlePos;
     public GameObject[] castles;
     public GameManager gameManager;
+    public Star star;
 
     [Header("Dynamic")]
     public int level;
@@ -75,7 +77,7 @@ public class MissionDemolition : MonoBehaviour {
         level++;
         if (level == levelMax)
         {
-            level = levelMax - 1 ;
+            level = levelMax - 1;
             gameManager.GameOver();
             return;
         }
