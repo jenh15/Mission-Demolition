@@ -20,12 +20,17 @@ public class Star : MonoBehaviour
             Star.starHit = true;
             if (shinySound != null)
             {
-                shinySound.Play();
+                GameObject soundObj = new GameObject("StarSound");
+                AudioSource audioSource = soundObj.AddComponent<AudioSource>();
+                audioSource.clip = shinySound.clip;
+                audioSource.Play();
+
+                Destroy(soundObj, shinySound.clip.length);
             }
 
             MissionDemolition.StarCollected();
 
-            Destroy(gameObject, shinySound.clip.length);
+            Destroy(gameObject);
         }
     }
 }

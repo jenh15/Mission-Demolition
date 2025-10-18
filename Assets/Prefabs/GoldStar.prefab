@@ -89,7 +89,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 15, y: 15, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &-7300400572128673970
 AudioSource:
@@ -199,4 +199,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1165607851b6624e8d5fb33724dad13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numStars: 0

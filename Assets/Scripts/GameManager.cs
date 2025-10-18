@@ -39,9 +39,4 @@ public class GameManager : MonoBehaviour
         gameOverUI.SetActive(false);
         missionDemo.StartLevel();
     }
-
-    public void Quit()
-    {
-        Application.Quit();
-    }
 }

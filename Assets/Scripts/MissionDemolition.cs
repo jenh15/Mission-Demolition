@@ -53,7 +53,10 @@ public class MissionDemolition : MonoBehaviour {
         Goal.goalMet = false;
 
         starsThisLevel = 0;
-        S.levelStarIcons[0].SetActive(false);
+        for (int i = 0; i < 3; i++)
+        {
+            S.levelStarIcons[i].SetActive(false);
+        }
 
         UpdateGUI();
 
@@ -105,7 +108,7 @@ public class MissionDemolition : MonoBehaviour {
         S.starsThisLevel++;
         S.totalStars++;
 
-        if (S.levelStarIcons[S.starsThisLevel - 1] != null)
+        if (S.starsThisLevel <= S.levelStarIcons.Length)
         {
             S.levelStarIcons[S.starsThisLevel - 1].SetActive(true);
         }
