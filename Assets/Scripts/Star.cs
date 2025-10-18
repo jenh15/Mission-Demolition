@@ -5,7 +5,6 @@ using UnityEngine;
 public class Star : MonoBehaviour
 {
     static public bool starHit = false;
-    public int numStars = 0;
     private AudioSource shinySound;
 
     void Start()
@@ -19,11 +18,12 @@ public class Star : MonoBehaviour
         if (proj != null)
         {
             Star.starHit = true;
-            numStars++;
             if (shinySound != null)
             {
                 shinySound.Play();
             }
+
+            MissionDemolition.StarCollected();
 
             Destroy(gameObject, shinySound.clip.length);
         }

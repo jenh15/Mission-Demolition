@@ -20,7 +20,7 @@ public class MissionDemolition : MonoBehaviour {
     public Vector3 castlePos;
     public GameObject[] castles;
     public GameManager gameManager;
-    public Star star;
+    public GameObject[] levelStarIcons;
 
     [Header("Dynamic")]
     public int level;
@@ -29,6 +29,8 @@ public class MissionDemolition : MonoBehaviour {
     public GameObject castle;
     public GameMode mode = GameMode.idle;
     public string showing = "Show Slingshot";
+    public int starsThisLevel = 0;
+    public int totalStars = 0;
 
     void Start(){
         S=this;
@@ -50,6 +52,9 @@ public class MissionDemolition : MonoBehaviour {
 
         Goal.goalMet = false;
 
+        starsThisLevel = 0;
+        S.levelStarIcons[0].SetActive(false);
+
         UpdateGUI();
 
         mode = GameMode.playing;
@@ -61,6 +66,7 @@ public class MissionDemolition : MonoBehaviour {
     void UpdateGUI(){
         uitLevel.text = "Level: "+(level+1)+ " of "+levelMax;
         uitShots.text = "Shots Taken: " + shotsTaken;
+        uiNumStars.text = "Stars: " + totalStars;
     }
 
     void Update(){
@@ -89,7 +95,19 @@ public class MissionDemolition : MonoBehaviour {
         S.shotsTaken++;
     }
 
-    static public GameObject GET_CASTLE(){
+    static public GameObject GET_CASTLE()
+    {
         return S.castle;
+    }
+    
+    static public void StarCollected()
+    {
+        S.starsThisLevel++;
+        S.totalStars++;
+
+        if (S.levelStarIcons[S.starsThisLevel - 1] != null)
+        {
+            S.levelStarIcons[S.starsThisLevel - 1].SetActive(true);
+        }
     }
 }

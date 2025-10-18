@@ -31,6 +31,11 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         missionDemo.level = 0;
         missionDemo.shotsTaken = 0;
+        missionDemo.totalStars = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            missionDemo.levelStarIcons[i].SetActive(false);
+        }
         gameOverUI.SetActive(false);
         missionDemo.StartLevel();
     }
